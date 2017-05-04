@@ -1,26 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Codelab extends React.Component{
-    render(){
-
-        let text = "Hi I am codelab";
-        let style ={
-            backgroundColor:'aqua'
+class Counter extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: 0
         };
-
-        return(
-            <div style={style}>{text}</div>
-        );
+        this.handleClick = this.handleClick.bind(this);
     }
 
+    handleClick(){
+        this.setState({
+            value:this.state.value +1
+        });
+    }
+
+    render()
+        {
+            return (
+                <div>
+                    <h2>{this.state.value}</h2>
+                    <button onClick={this.handleClick}>Press Me</button>
+                </div>
+            )
+        }
 }
 
 class App extends React.Component{
     render()
     {
         return(
-            <Codelab/>
+          <Counter/>
         );
     }
 
